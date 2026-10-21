@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "Please cite the original PANGAEA dataset and this repository when reusing the analysis."
+title: "Paleocene–Eocene Paleoclimate Statistics"
+type: software
+authors:
+  - name: "Project contributor (update with your preferred citation name)"
+license: MIT
