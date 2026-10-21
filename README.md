@@ -1,32 +1,76 @@
-# Paleocene–Eocene Paleoclimate Statistics
+ # Statistical Analysis of Paleocene–Eocene Paleoclimate Proxies
 
-Reproducible Python investigation of Paleocene–Eocene carbon and oxygen isotope variability, beginning with the PETM at ODP Site 208-1262 (Walvis Ridge, South Atlantic).
+## Project overview
 
-## Research question
-How do published bulk carbonate δ¹³C and δ¹⁸O records characterize carbon-cycle and environmental changes near the PETM, and how robust are inferred transitions to data processing and chronology?
+This project investigates the Paleocene–Eocene Thermal Maximum
+(PETM) using published bulk carbonate carbon and oxygen isotope
+measurements from ODP Site 1262, South Atlantic Ocean.
 
-## Data provenance
-Barnet, J. S. K., et al. (2019), PANGAEA [dataset], DOI: [10.1594/PANGAEA.903507](https://doi.org/10.1594/PANGAEA.903507). Accompanying article DOI: [10.1029/2019PA003556](https://doi.org/10.1029/2019PA003556). Data CC BY 4.0; credit original authors and dataset in derivatives.
+The objective is to quantify the observed carbon isotope excursion
+and explore changes in the isotope trajectory using reproducible
+statistical methods.
 
-Download the original PANGAEA tab-delimited file and save as `data/raw/208-1262_isotope.tab.tsv`. Raw data are not bundled here; users should obtain the authoritative version from PANGAEA.
+## Data source
 
-## Quick start
-```bash
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
-python src/audit.py
-```
+Barnet et al. (2019), PANGAEA:
+https://doi.org/10.1594/PANGAEA.903507
 
-Outputs are written to `data/processed/`, `results/`, and `figures/`.
+The original dataset is preserved in `data/raw/`.
+See the PANGAEA record for dataset citation and reuse conditions.
 
-## Status
-- Week 1: source metadata checked; 4,364 rows; 4,360 complete isotope pairs; 324 rows in provisional 56.3–55.5 Ma window.
-- One local age–depth inversion (158.63–158.66 mcd; 57.521→57.520 Ma) retained and flagged, outside PETM window.
-- PETM baseline, onset, nadir, and recovery boundaries **not finalized**. Prior threshold analysis was exploratory and window-censored at 55.5 Ma.
+## Methods
 
-See [research log](docs/research_log.md), [methods](docs/methodology.md), and [data sources](docs/data_sources.md).
+- Dataset quality assessment
+- Isotope time-series visualization
+- Carbon isotope excursion quantification
+- Baseline sensitivity analysis
+- Piecewise-constant change-point analysis
+- Segmented linear regression
+- Exploratory BIC model comparison
+- Residual autocorrelation diagnostics
+- Breakpoint sensitivity analysis
 
-## Research integrity
-Age precision is not age accuracy. Bulk isotope records are not direct temperature reconstructions. Avoid treating a threshold crossing as an independently validated event boundary.
+## Key findings
+
+- Pre-excursion median δ13C: 2.836 per mil
+- Observed minimum δ13C: 0.187 per mil
+- Baseline-to-minimum difference: 2.649 per mil
+- Three-segment linear model RSS: approximately 3.038
+- First fitted breakpoint interval: 55.932–55.905 Ma
+- A 27 kyr sampling gap limits transition timing.
+
+The segmented model is exploratory. Residual autocorrelation
+and breakpoint sensitivity limit geological interpretation.
+
+## Reproducibility
+
+Use Python 3 and a virtual environment.
+
+Install dependencies:
+
+    python -m pip install -r requirements.txt
+
+Open the notebooks in VS Code or Jupyter and run them in order:
+
+1. 01_dataset_audit.ipynb
+2. 02_petm_excursion.ipynb
+3. 03_change_point_analysis.ipynb
+4. 04_segmented_linear_regression.ipynb
+5. 05_model_validation.ipynb
+6. 06_final_outputs.ipynb
+
+Run each notebook from its first cell and confirm that file paths
+point to the project directory.
+
+## Outputs
+
+- `figures/`: scientific visualizations
+- `results/`: statistical tables and diagnostics
+- `report/`: scientific research report
+
+## Limitations
+
+The analysis uses the published age model and does not independently
+propagate chronological uncertainty. Sampling gaps, irregular temporal
+spacing, and serially correlated residuals limit precise breakpoint
+and rate interpretation.

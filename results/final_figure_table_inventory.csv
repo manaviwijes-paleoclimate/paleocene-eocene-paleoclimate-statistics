@@ -1,0 +1,9 @@
+item,description,status
+Figure 1,Full isotope record,Review existing figure
+Figure 2,PETM carbon isotope excursion,Review existing figure
+Figure 3,Segmented linear regression,Review existing figure
+Figure 4,BIC model comparison,Review existing figure
+Table 1,Dataset and QC summary,Compile
+Table 2,CIE magnitude and sensitivity,Compile
+Table 3,Segmented regression results,Review existing CSV
+Table 4,Model comparison,Review existing CSV
